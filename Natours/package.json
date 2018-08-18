@@ -4,7 +4,8 @@
   "description": "css practice app",
   "main": "index.js",
   "scripts": {
-    "compile:sass": "node-sass sass/main.scss starter/css/style.css"
+    "compile:sass": "node-sass sass/main.scss starter/css/style.css -w",
+    "live-server": "node-sass sass/main.scss starter/css/style.css -w & live-server starter"
   },
   "author": "Hector Coronado",
   "license": "ISC",
