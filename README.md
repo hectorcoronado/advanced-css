@@ -130,3 +130,76 @@ an algorithm that calculates boxes & determines the layout of these boxes for ea
 - stacking contexts
 - other elements in the render tree
 - viewport size, dimensions of images, etc.
+
+# Box Types:
+
+1. Block-level boxes:
+
+- elements formatted visually as blocks
+- 100% of parent's width
+- vertically, one after another
+- box model applies as shown
+    - `display: block`
+    - `display: flex`
+    - `display: list-item`
+    - `display: table`
+
+2. Inline boxes:
+
+- content is distributed in lines
+- occupies only content's space
+- no line-breaks
+- no heights or widths
+- paddings and margins only horizontal (left and right)
+    - `display: inline`
+
+3. Inline-block boxes:
+
+- a mix of block and inline
+- occupies only content's space
+- no line breaks
+- box-model applies as shown
+    - `display: inline-block`
+
+# Positioning Schemes: Normal flow, Absolute Positioning, & Floats
+*positioning does not cascade*
+
+1. Normal flow:
+
+- *not* floated
+- *not* absolutely positioned
+- elements laid out according to their source order
+    - `position: relative`
+
+2. Floats:
+
+- element is removed from the normal flow
+- text and inline elements will wrap around the floated element
+- the container **will not adjust its height** to the element
+    - `float: left`
+    - `float: right`
+
+3. Absolute positioning:
+
+- element is removed from the normal flow
+- no impact on surrounding content or elements
+- we use `top`, `bottom`, `left`, and `right` to offset the element from its `relative`ly positioned container
+    - example:
+    ```css
+    .parent {
+        position: relative;
+    }
+
+    .child {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translateX(-50%); /* this centers the element horizontally */
+    }
+    ```
+4. Fixed:
+
+- this type of positioning is fairly rare, but has its uses
+- a fixed position element is positioned relative to the *viewport*
+- it's useful for e.g. a navbar that should render at the top of the page and stay there as a user scrolls down
+
