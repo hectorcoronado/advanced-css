@@ -1,0 +1,14 @@
+{
+  "name": "natours",
+  "version": "1.0.0",
+  "description": "css practice app",
+  "main": "index.js",
+  "scripts": {
+    "compile:sass": "node-sass sass/main.scss starter/css/style.css"
+  },
+  "author": "Hector Coronado",
+  "license": "ISC",
+  "devDependencies": {
+    "node-sass": "^4.5.3"
+  }
+}

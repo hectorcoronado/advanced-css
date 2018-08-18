@@ -1,10 +1,16 @@
+// greens:
+$color-primary: #55c57a;
+$color-primary-light: #7ed56f;
+$color-primary-dark: #28b485;
+
 *,
 *::after,
 *::before {
-  /* inherit `box-sizing: border-box` everywhere, but declare it on the `body` element selector */
-  box-sizing: inherit;
-  margin: 0;
-  padding: 0; }
+    /* inherit `box-sizing: border-box` everywhere, but declare it on the `body` element selector */
+    box-sizing: inherit;    
+    margin: 0;
+    padding: 0;
+}
 
 html {
   /* 
@@ -22,7 +28,8 @@ html {
     * therefore, if the user changes their default font-size to e.g. 20px, our
     * site will automatically convert to a 12.5px font-size (.625 * 20 = 12.5)
   */
-  font-size: 62.5%; }
+  font-size: 62.5%;
+}
 
 body {
   /* set `box-sizing: border-box;` on the body tag, then inherit everywhere with the universal selector */
@@ -32,92 +39,117 @@ body {
   font-weight: 400;
   /* font-size: 16px; */
   line-height: 1.7;
-  padding: 3rem; }
+  padding: 3rem;
+}
 
 .header {
-  background-image: linear-gradient(to right bottom, rgba(126, 213, 111, 0.8), rgba(40, 180, 133, 0.8)), url(../img/hero.jpg);
+  background-image: linear-gradient(
+      to right bottom, 
+      rgba($color-primary-light, 0.8), 
+      rgba($color-primary-dark, 0.8)),
+      url(../img/hero.jpg);
   background-position: top;
   background-size: cover;
-  clip-path: polygon(0 0, 100% 0, 100% 75vh, 0 100%);
+  clip-path: polygon(0  0, 100% 0, 100% 75vh, 0 100%);
   height: 95vh;
-  position: relative; }
+  position: relative;
+}
 
 .header__logo-box {
   position: absolute;
   top: 4rem;
-  left: 4rem; }
+  left: 4rem;
+}
 
 .header__logo {
-  height: 3.5rem; }
+  height: 3.5rem;
+}
 
 .header__text-box {
   position: absolute;
   top: 40%;
   left: 50%;
   transform: translate(-50%, -50%);
-  text-align: center;
-  /* since we have `<a>` elements that act as buttons, but are treated as text by browsers, we can center them via this property  */ }
+  text-align: center; /* since we have `<a>` elements that act as buttons, but are treated as text by browsers, we can center them via this property  */
+}
 
 .heading-primary {
   color: #FFF;
   margin-bottom: 6rem;
   text-transform: uppercase;
-  backface-visibility: hidden;
-  /* setting this property prevents the upward twitch at the end of some animations */ }
+
+  backface-visibility: hidden; /* setting this property prevents the upward twitch at the end of some animations */
+
+}
 
 .heading-primary--main {
   display: block;
   font-size: 6rem;
   font-weight: 400;
   letter-spacing: 3.5rem;
+
   /*
   animation-name: moveInLeft;
   animation-duration: 1s;
   animation-timing-function: ease-out;
   */
-  animation: moveInLeft .6s ease-out; }
+  animation: moveInLeft .6s ease-out;
+}
 
 .heading-primary--sub {
   display: block;
   font-size: 2rem;
   font-weight: 700;
   letter-spacing: 1.75rem;
+
   /*
   animation-name: moveInRight;
   animation-duration: 1s;
   animation-timing-function: ease-out;
   */
-  animation: moveInRight .6s ease-out; }
+  animation: moveInRight .6s ease-out;
+}
 
 @keyframes moveInLeft {
   0% {
     opacity: 0;
     transform: translateX(-8rem);
-    /* transform: rotate(0deg);     */ }
+    /* transform: rotate(0deg);     */
+  }
   80% {
-    transform: translateX(0.5rem); }
+    transform: translateX(.5rem);
+  }
   100% {
     opacity: 1;
     transform: translate(0);
-    /* transform: rotate(1800deg); */ } }
+    /* transform: rotate(1800deg); */
+  }
+}
 
 @keyframes moveInRight {
   0% {
     opacity: 0;
-    transform: translateX(8rem); }
+    transform: translateX(8rem);
+  }
   80% {
-    transform: translateX(-0.5rem); }
+    transform: translateX(-.5rem);
+  }
   100% {
     opacity: 1;
-    transform: translate(0); } }
+    transform: translate(0);
+  }
+}
 
 @keyframes moveInBottom {
   0% {
     opacity: 0;
-    transform: translateY(2rem); }
+    transform: translateY(2rem);
+  }
   100% {
     opacity: 1;
-    transform: translate(0); } }
+    transform: translate(0);
+  }
+}
 
 .btn:link,
 .btn:visited {
@@ -128,20 +160,23 @@ body {
   position: relative;
   text-transform: uppercase;
   text-decoration: none;
-  transition: all .2s;
-  /* `transition` on all the states, as defined below (.btn:hover, .btn:active, etc), and define duration */ }
+  transition: all .2s; /* `transition` on all the states, as defined below (.btn:hover, .btn:active, etc), and define duration */
+}
 
 .btn:hover {
-  transform: translateY(-0.3rem);
-  box-shadow: 0 1rem 2rem rgba(0, 0, 0, 0.2); }
+  transform: translateY(-.3rem);
+  box-shadow: 0 1rem 2rem rgba(0, 0, 0, .2);
+}
 
 .btn:active {
-  transform: translateY(-0.1rem);
-  box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.2); }
+  transform: translateY(-.1rem);
+  box-shadow: 0 .5rem 1rem rgba(0, 0, 0, .2);
+}
 
 .btn--white {
   background-color: #fff;
-  color: #777; }
+  color: #777;
+}
 
 /*
 `btn::after` will specify properties for the animation that occurs on the `<a class="btn..."> elements
@@ -157,10 +192,12 @@ body {
   top: 0;
   left: 0;
   z-index: -1;
-  transition: all .4s; }
+  transition: all .4s;
+}
 
 .btn--white::after {
-  background-color: #FFF; }
+  background-color: #FFF;
+}
 
 /*
 - `after` pseudo-element only on the hover-state
@@ -173,8 +210,10 @@ body {
 */
 .btn:hover::after {
   transform: scaleX(1.4) scaleY(1.6);
-  opacity: 0; }
+  opacity: 0;
+}
 
 .btn--animated {
-  animation: moveInBottom .5s ease-out .4s;
-  animation-fill-mode: backwards; }
+    animation: moveInBottom .5s ease-out .4s;
+    animation-fill-mode: backwards;
+} 
