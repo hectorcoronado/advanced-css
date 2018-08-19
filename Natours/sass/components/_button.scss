@@ -1,0 +1,71 @@
+.btn {
+
+    &:link,
+    &:visited {
+      border-radius: 10rem;
+      display: inline-block;
+      font-size: 1.6rem;
+      padding: 1.5rem 4rem;
+      position: relative;
+      text-transform: uppercase;
+      text-decoration: none;
+      transition: all .2s; /* `transition` on all the states, as defined below (.btn:hover, .btn:active, etc), and define duration */
+    }
+    
+    &:hover {
+      transform: translateY(-.3rem);
+      box-shadow: 0 1rem 2rem rgba($color-black, .2);
+
+        &::after {
+            transform: scaleX(1.4) scaleY(1.6);
+            opacity: 0;
+        }
+    }
+    
+    &:active {
+      transform: translateY(-.1rem);
+      box-shadow: 0 .5rem 1rem rgba($color-black, .2);
+    }
+    
+    &--white {
+      background-color: $color-white;
+      color: $color-gray-dark;
+
+        &::after {
+            background-color: $color-white;
+        }
+    }
+    
+    /*
+    `btn::after` will specify properties for the animation that occurs on the `<a class="btn..."> elements
+      - specifying the `after` pseudo-element essentially creates a child element on the `<a>` element; this is why we declare `width` & `height`
+    */
+    &::after {
+      border-radius: 10rem;
+      position: absolute;
+      content: "";
+      display: inline-block;
+      height: 100%;
+      width: 100%;
+      top: 0;
+      left: 0;
+      z-index: -1;
+      transition: all .4s;
+    }
+
+    
+    /*
+    - `after` pseudo-element only on the hover-state
+      - we've set the initial state on `.btn::after` above:
+      - `transition: all .4s;` means that upon hovering, this button will
+          - scale to 1.4 times its size on the x-axis
+          - scale to 1.6 times its size on the y-axis
+          - and fade to transparent (0 opacity)
+      ...over an interval of .4 seconds
+    */
+    
+    &--animated {
+        animation: moveInBottom .5s ease-out .4s;
+        animation-fill-mode: backwards;
+    } 
+}

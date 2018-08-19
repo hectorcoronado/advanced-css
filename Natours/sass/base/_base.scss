@@ -1,0 +1,31 @@
+*,
+*::after,
+*::before {
+    /* inherit `box-sizing: border-box` everywhere, but declare it on the `body` element selector */
+    box-sizing: inherit;    
+    margin: 0;
+    padding: 0;
+}
+
+html {
+  /* 
+   * set to 10px to enable use of rem-units; this works, but overrides
+   * font-size that e.g. a limited-visibility user may have set, so it's
+   * bad practice.
+   *
+   * much better is to set it using a percentage of the browser's default
+   * setting, 16px
+   *
+   * if we want the setting to equal 10px, we divide 10/16 = 0.625
+   *
+   * therefore, if the user changes their default font-size to e.g. 20px, our
+   * site will automatically convert to a 12.5px font-size (.625 * 20 = 12.5)
+  */
+  font-size: 62.5%;
+}
+
+body {
+  /* set `box-sizing: border-box;` on the body tag, then inherit everywhere with the universal selector */
+  box-sizing: border-box;
+  padding: 3rem;
+}

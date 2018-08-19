@@ -1,94 +1,3 @@
-*,
-*::after,
-*::before {
-  /* inherit `box-sizing: border-box` everywhere, but declare it on the `body` element selector */
-  box-sizing: inherit;
-  margin: 0;
-  padding: 0; }
-
-html {
-  /* 
-    * set to 10px to enable use of rem-units; this works, but overrides
-    * font-size that e.g. a limited-visibility user may have set, so it's
-    * bad practice.
-  */
-  /* font-size: 10px; */
-  /*
-    * much better is to set it using a percentage of the browser's default
-    * setting, 16px
-    *
-    * if we want the setting to equal 10px, we divide 10/16 = 0.625
-    *
-    * therefore, if the user changes their default font-size to e.g. 20px, our
-    * site will automatically convert to a 12.5px font-size (.625 * 20 = 12.5)
-  */
-  font-size: 62.5%; }
-
-body {
-  /* set `box-sizing: border-box;` on the body tag, then inherit everywhere with the universal selector */
-  box-sizing: border-box;
-  color: #777;
-  font-family: "Lato", sans-serif;
-  font-weight: 400;
-  /* font-size: 16px; */
-  line-height: 1.7;
-  padding: 3rem; }
-
-.header {
-  background-image: linear-gradient(to right bottom, rgba(126, 213, 111, 0.8), rgba(40, 180, 133, 0.8)), url(../img/hero.jpg);
-  background-position: top;
-  background-size: cover;
-  clip-path: polygon(0 0, 100% 0, 100% 75vh, 0 100%);
-  height: 95vh;
-  position: relative; }
-
-.header__logo-box {
-  position: absolute;
-  top: 4rem;
-  left: 4rem; }
-
-.header__logo {
-  height: 3.5rem; }
-
-.header__text-box {
-  position: absolute;
-  top: 40%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  text-align: center;
-  /* since we have `<a>` elements that act as buttons, but are treated as text by browsers, we can center them via this property  */ }
-
-.heading-primary {
-  color: #FFF;
-  margin-bottom: 6rem;
-  text-transform: uppercase;
-  backface-visibility: hidden;
-  /* setting this property prevents the upward twitch at the end of some animations */ }
-
-.heading-primary--main {
-  display: block;
-  font-size: 6rem;
-  font-weight: 400;
-  letter-spacing: 3.5rem;
-  /*
-  animation-name: moveInLeft;
-  animation-duration: 1s;
-  animation-timing-function: ease-out;
-  */
-  animation: moveInLeft .6s ease-out; }
-
-.heading-primary--sub {
-  display: block;
-  font-size: 2rem;
-  font-weight: 700;
-  letter-spacing: 1.75rem;
-  /*
-  animation-name: moveInRight;
-  animation-duration: 1s;
-  animation-timing-function: ease-out;
-  */
-  animation: moveInRight .6s ease-out; }
-
 @keyframes moveInLeft {
   0% {
     opacity: 0;
@@ -119,62 +28,143 @@ body {
     opacity: 1;
     transform: translate(0); } }
 
-.btn:link,
-.btn:visited {
-  border-radius: 10rem;
-  display: inline-block;
-  font-size: 1.6rem;
-  padding: 1.5rem 4rem;
-  position: relative;
+*,
+*::after,
+*::before {
+  /* inherit `box-sizing: border-box` everywhere, but declare it on the `body` element selector */
+  box-sizing: inherit;
+  margin: 0;
+  padding: 0; }
+
+html {
+  /* 
+   * set to 10px to enable use of rem-units; this works, but overrides
+   * font-size that e.g. a limited-visibility user may have set, so it's
+   * bad practice.
+   *
+   * much better is to set it using a percentage of the browser's default
+   * setting, 16px
+   *
+   * if we want the setting to equal 10px, we divide 10/16 = 0.625
+   *
+   * therefore, if the user changes their default font-size to e.g. 20px, our
+   * site will automatically convert to a 12.5px font-size (.625 * 20 = 12.5)
+  */
+  font-size: 62.5%; }
+
+body {
+  /* set `box-sizing: border-box;` on the body tag, then inherit everywhere with the universal selector */
+  box-sizing: border-box;
+  padding: 3rem; }
+
+body {
+  color: #777;
+  font-family: "Lato", sans-serif;
+  font-weight: 400;
+  line-height: 1.7; }
+
+/**
+  * since using the `&` copies the selector, we can use nesting here: 
+  */
+.heading-primary {
+  color: #FFF;
+  margin-bottom: 6rem;
   text-transform: uppercase;
-  text-decoration: none;
-  transition: all .2s;
-  /* `transition` on all the states, as defined below (.btn:hover, .btn:active, etc), and define duration */ }
+  backface-visibility: hidden;
+  /* setting this property prevents the upward twitch at the end of some animations */ }
+  .heading-primary--main {
+    display: block;
+    font-size: 6rem;
+    font-weight: 400;
+    letter-spacing: 3.5rem;
+    /*
+    animation-name: moveInLeft;
+    animation-duration: 1s;
+    animation-timing-function: ease-out;
+    */
+    animation: moveInLeft .6s ease-out; }
+  .heading-primary--sub {
+    display: block;
+    font-size: 2rem;
+    font-weight: 700;
+    letter-spacing: 1.75rem;
+    /*
+    animation-name: moveInRight;
+    animation-duration: 1s;
+    animation-timing-function: ease-out;
+    */
+    animation: moveInRight .6s ease-out; }
 
-.btn:hover {
-  transform: translateY(-0.3rem);
-  box-shadow: 0 1rem 2rem rgba(0, 0, 0, 0.2); }
+.btn {
+  /*
+    `btn::after` will specify properties for the animation that occurs on the `<a class="btn..."> elements
+      - specifying the `after` pseudo-element essentially creates a child element on the `<a>` element; this is why we declare `width` & `height`
+    */
+  /*
+    - `after` pseudo-element only on the hover-state
+      - we've set the initial state on `.btn::after` above:
+      - `transition: all .4s;` means that upon hovering, this button will
+          - scale to 1.4 times its size on the x-axis
+          - scale to 1.6 times its size on the y-axis
+          - and fade to transparent (0 opacity)
+      ...over an interval of .4 seconds
+    */ }
+  .btn:link, .btn:visited {
+    border-radius: 10rem;
+    display: inline-block;
+    font-size: 1.6rem;
+    padding: 1.5rem 4rem;
+    position: relative;
+    text-transform: uppercase;
+    text-decoration: none;
+    transition: all .2s;
+    /* `transition` on all the states, as defined below (.btn:hover, .btn:active, etc), and define duration */ }
+  .btn:hover {
+    transform: translateY(-0.3rem);
+    box-shadow: 0 1rem 2rem rgba(0, 0, 0, 0.2); }
+    .btn:hover::after {
+      transform: scaleX(1.4) scaleY(1.6);
+      opacity: 0; }
+  .btn:active {
+    transform: translateY(-0.1rem);
+    box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.2); }
+  .btn--white {
+    background-color: #FFF;
+    color: #777; }
+    .btn--white::after {
+      background-color: #FFF; }
+  .btn::after {
+    border-radius: 10rem;
+    position: absolute;
+    content: "";
+    display: inline-block;
+    height: 100%;
+    width: 100%;
+    top: 0;
+    left: 0;
+    z-index: -1;
+    transition: all .4s; }
+  .btn--animated {
+    animation: moveInBottom .5s ease-out .4s;
+    animation-fill-mode: backwards; }
 
-.btn:active {
-  transform: translateY(-0.1rem);
-  box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.2); }
-
-.btn--white {
-  background-color: #FFF;
-  color: #777; }
-
-/*
-`btn::after` will specify properties for the animation that occurs on the `<a class="btn..."> elements
-  - specifying the `after` pseudo-element essentially creates a child element on the `<a>` element; this is why we declare `width` & `height`
-*/
-.btn::after {
-  border-radius: 10rem;
-  position: absolute;
-  content: "";
-  display: inline-block;
-  height: 100%;
-  width: 100%;
-  top: 0;
-  left: 0;
-  z-index: -1;
-  transition: all .4s; }
-
-.btn--white::after {
-  background-color: #FFF; }
-
-/*
-- `after` pseudo-element only on the hover-state
-  - we've set the initial state on `.btn::after` above:
-  - `transition: all .4s;` means that upon hovering, this button will
-      - scale to 1.4 times its size on the x-axis
-      - scale to 1.6 times its size on the y-axis
-      - and fade to transparent (0 opacity)
-  ...over an interval of .4 seconds
-*/
-.btn:hover::after {
-  transform: scaleX(1.4) scaleY(1.6);
-  opacity: 0; }
-
-.btn--animated {
-  animation: moveInBottom .5s ease-out .4s;
-  animation-fill-mode: backwards; }
+.header {
+  background-image: linear-gradient(to right bottom, rgba(126, 213, 111, 0.8), rgba(40, 180, 133, 0.8)), url(../img/hero.jpg);
+  background-position: top;
+  background-size: cover;
+  clip-path: polygon(0 0, 100% 0, 100% 75vh, 0 100%);
+  height: 95vh;
+  position: relative; }
+  .header__logo-box {
+    position: absolute;
+    top: 4rem;
+    left: 4rem; }
+  .header__logo {
+    height: 3.5rem; }
+  .header__text-box {
+    position: absolute;
+    top: 40%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    /* since we have `<a>` elements that act as buttons, but are treated as text by browsers, we can center them via this property  */ }
