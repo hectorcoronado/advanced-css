@@ -1,3 +1,7 @@
+# To run a dev-server:
+
+`$ cd Natours && npm run live-server`
+
 # CSS properties and values explanations:
 
 ## `box-sizing`
