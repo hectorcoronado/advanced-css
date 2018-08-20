@@ -67,7 +67,7 @@ body {
   * since using the `&` copies the selector, we can use nesting here: 
   */
 .heading-primary {
-  color: #FFF;
+  color: #fff;
   margin-bottom: 6rem;
   text-transform: uppercase;
   backface-visibility: hidden;
@@ -94,6 +94,45 @@ body {
     animation-timing-function: ease-out;
     */
     animation: moveInRight .6s ease-out; }
+
+.heading-secondary {
+  font-size: 3.5rem;
+  font-weight: 700;
+  letter-spacing: .2rem;
+  text-transform: uppercase;
+  /**
+    * to create `.heading-secondary` gradient:
+    * 1. set element's background-image to required gradient
+    * 2. set element's display to inline-block (so gradient stops where our
+    *    text does
+    * 3. set `-webkit-background-clip: text`
+    *     - this causes the background to get clipped exactly where the text is
+    *       and nowhere else (determines the background painting area)
+    * 4. make the text itself transparent, so the background-image shows through
+    */
+  background-image: linear-gradient(to right, #7ed56f, #28b485);
+  display: inline-block;
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+  /**
+    * to create `.heading-secondary` animated transition:
+    * 1. set `transition` to all, over a .2s timeframe
+    * 2. create skew transforms that occur on hover
+    *     - skew along y-axis by 2 degrees
+    *     - skew along x-axis by 15 degrees
+    *     - make slightly larger by scaling up 1.1 times
+    *     - add a text-shadow:
+    *         - 5px in x-axis, 10px in y-axis, 20px of blur
+    *         - make it $color-black, and give it .2 opacity
+    */
+  transition: all .2s; }
+  .heading-secondary:hover {
+    transform: skewY(2deg) skewX(15deg) scale(1.1);
+    text-shadow: 0.5rem 1rem 2rem rgba(0, 0, 0, 0.2); }
+
+.u-center-text {
+  text-align: center; }
 
 .btn {
   /*
@@ -129,10 +168,10 @@ body {
     transform: translateY(-0.1rem);
     box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.2); }
   .btn--white {
-    background-color: #FFF;
+    background-color: #fff;
     color: #777; }
     .btn--white::after {
-      background-color: #FFF; }
+      background-color: #fff; }
   .btn::after {
     border-radius: 10rem;
     position: absolute;
@@ -200,3 +239,14 @@ body {
     transform: translate(-50%, -50%);
     text-align: center;
     /* since we have `<a>` elements that act as buttons, but are treated as text by browsers, we can center them via this property  */ }
+
+.section-about {
+  background-color: #f7f7f7;
+  padding: 25rem 0;
+  /**
+      * we have a polygon in the header, creating a triangular white-space above
+      * - `.section-about`; `.header`'s height is 95vh, the polygon begins at
+      * - 75vh, so we can pull this section up by 20vh's to "erase" the 
+      * - whitespace
+      */
+  margin-top: -20vh; }

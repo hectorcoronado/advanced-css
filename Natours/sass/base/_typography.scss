@@ -45,3 +45,42 @@ body {
     animation: moveInRight .6s ease-out;
   }
 }
+
+.heading-secondary {
+  font-size: 3.5rem;
+  font-weight: 700;
+  letter-spacing: .2rem;
+  text-transform: uppercase;
+  /**
+    * to create `.heading-secondary` gradient:
+    * 1. set element's background-image to required gradient
+    * 2. set element's display to inline-block (so gradient stops where our
+    *    text does
+    * 3. set `-webkit-background-clip: text`
+    *     - this causes the background to get clipped exactly where the text is
+    *       and nowhere else (determines the background painting area)
+    * 4. make the text itself transparent, so the background-image shows through
+    */
+  background-image: linear-gradient(to right, $color-primary-light, $color-primary-dark);
+  display: inline-block;
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+
+  /**
+    * to create `.heading-secondary` animated transition:
+    * 1. set `transition` to all, over a .2s timeframe
+    * 2. create skew transforms that occur on hover
+    *     - skew along y-axis by 2 degrees
+    *     - skew along x-axis by 15 degrees
+    *     - make slightly larger by scaling up 1.1 times
+    *     - add a text-shadow:
+    *         - 5px in x-axis, 10px in y-axis, 20px of blur
+    *         - make it $color-black, and give it .2 opacity
+    */
+  transition: all .2s;
+  &:hover {
+    transform: skewY(2deg) skewX(15deg) scale(1.1);
+    text-shadow: .5rem 1rem 2rem rgba($color-black, .2);
+  }
+}
