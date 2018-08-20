@@ -134,6 +134,9 @@ body {
 .u-center-text {
   text-align: center; }
 
+.u-margin-bottom-8 {
+  margin-bottom: 8rem; }
+
 .btn {
   /*
     `btn::after` will specify properties for the animation that occurs on the `<a class="btn..."> elements
@@ -189,7 +192,6 @@ body {
 
 .row {
   max-width: 114rem;
-  background-color: #eee;
   margin: 0 auto;
   /** we use an attribute selector to apply style to *all* columns at once 
       * - we're choosing all elements with a class starting with `col`
@@ -202,7 +204,6 @@ body {
     display: table;
     clear: both; }
   .row [class^="col-"] {
-    background-color: orangered;
     float: left; }
     .row [class^="col-"]:not(:last-child) {
       margin-right: 3rem; }

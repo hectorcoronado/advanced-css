@@ -1,6 +1,5 @@
 .row {
     max-width: $grid-width;
-    background-color: #eee;
     margin: 0 auto;
 
     // remove `margin-bottom` from last row
@@ -15,7 +14,6 @@
       * - that's what the `^=` operator does (chooses things starting with something)
       */
     [class^="col-"] {
-        background-color: orangered;
         float: left;
 
         &:not(:last-child) {
