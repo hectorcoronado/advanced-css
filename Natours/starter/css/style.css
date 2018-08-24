@@ -110,10 +110,10 @@ body {
     *       and nowhere else (determines the background painting area)
     * 4. make the text itself transparent, so the background-image shows through
     */
-  background-image: linear-gradient(to right, #7ed56f, #28b485);
-  display: inline-block;
   background-clip: text;
   -webkit-background-clip: text;
+  background-image: linear-gradient(to right, #7ed56f, #28b485);
+  display: inline-block;
   color: transparent;
   /**
     * to create `.heading-secondary` animated transition:
@@ -252,6 +252,26 @@ body {
   .composition:hover .composition__photo:not(:hover) {
     transform: scale(0.9); }
 
+.feature-box {
+  background-color: rgba(255, 255, 255, 0.8);
+  font-size: 1.5rem;
+  padding: 2.5rem;
+  text-align: center;
+  border-radius: 2px;
+  box-shadow: 0 1.5rem 4rem rgba(0, 0, 0, 0.15);
+  transition: all .2s; }
+  .feature-box:hover {
+    transform: scale(1.2) translateY(-1rem); }
+  .feature-box__icon {
+    font-size: 4rem;
+    margin-bottom: .5rem;
+    /* gradient for icons, pattern of `_typography.scss=>.heading-secondary */
+    background-clip: text;
+    -webkit-background-clip: text;
+    background-image: linear-gradient(to right, #7ed56f, #28b485);
+    color: transparent;
+    display: inline-block; }
+
 .row {
   max-width: 114rem;
   margin: 0 auto;
@@ -268,19 +288,19 @@ body {
   .row [class^="col-"] {
     float: left; }
     .row [class^="col-"]:not(:last-child) {
-      margin-right: 3rem; }
+      margin-right: 4.5rem; }
   .row .col-1-of-2 {
-    width: calc((100% - 3rem) / 2); }
+    width: calc((100% - 4.5rem) / 2); }
   .row .col-1-of-3 {
-    width: calc((100% - 2 * 3rem) / 3); }
+    width: calc((100% - 2 * 4.5rem) / 3); }
   .row .col-1-of-4 {
-    width: calc((100% - 3 * 3rem) / 4); }
+    width: calc((100% - 3 * 4.5rem) / 4); }
   .row .col-2-of-3 {
-    width: calc(2 * ((100% - 2 * 3rem) / 3) + 3rem); }
+    width: calc(2 * ((100% - 2 * 4.5rem) / 3) + 4.5rem); }
   .row .col-2-of-4 {
-    width: calc(2 * ((100% - 3 * 3rem) / 4) + 3rem); }
+    width: calc(2 * ((100% - 3 * 4.5rem) / 4) + 4.5rem); }
   .row .col-3-of-4 {
-    width: calc(3 * ((100% - 3 * 3rem) / 4) + (2 * 3rem)); }
+    width: calc(3 * ((100% - 3 * 4.5rem) / 4) + (2 * 4.5rem)); }
 
 .header {
   background-image: linear-gradient(to right bottom, rgba(126, 213, 111, 0.8), rgba(40, 180, 133, 0.8)), url(../img/hero.jpg);
@@ -313,3 +333,17 @@ body {
       * - whitespace
       */
   margin-top: -20vh; }
+
+.section-features {
+  padding: 20rem 0;
+  background-image: linear-gradient(to right bottom, rgba(126, 213, 111, 0.8), rgba(40, 180, 133, 0.8)), url(../img/nat-4.jpg);
+  background-size: cover;
+  margin-top: -10rem;
+  /**
+    * same effect as `clip-path` in `_headers.scss=>.header
+    * - `& > *` applies this skew *only* to the parent element
+    * - thus, all elements within render flatly/horizontally
+    */
+  transform: skewY(-7deg); }
+  .section-features > * {
+    transform: skewY(7deg); }

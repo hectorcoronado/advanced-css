@@ -61,11 +61,11 @@ body {
     *       and nowhere else (determines the background painting area)
     * 4. make the text itself transparent, so the background-image shows through
     */
-  background-image: linear-gradient(to right, $color-primary-light, $color-primary-dark);
-  display: inline-block;
-  background-clip: text;
-  -webkit-background-clip: text;
-  color: transparent;
+    background-clip: text;
+    -webkit-background-clip: text;
+    background-image: linear-gradient(to right, $color-primary-light, $color-primary-dark);
+    display: inline-block;
+    color: transparent;
 
   /**
     * to create `.heading-secondary` animated transition:
