@@ -1,0 +1,42 @@
+.composition {
+    position: relative; // to enable using `absolute` in .composition__photo
+
+    &__photo {
+        border-radius: 2px;
+        box-shadow: 0 1.5rem 4rem rgba($color-black, .4);
+        outline-offset: 2rem; // separate outline from element
+        position: absolute; // enable to position in circular pattern
+        transition: all .2s;
+        width: 55%;
+        z-index: 1; // enable hovered img atop non-hovered ones
+
+        &--p1 {
+            left: 0;
+            top: -2rem;
+        }
+        
+        &--p2 {
+            right: 10px;
+            top: 2rem;
+        }
+        
+        &--p3 {
+            left: 20%;
+            top: 10rem;
+        }
+
+        &:hover {
+            outline: 1rem solid $color-primary; // create border-like
+            box-shadow: 0 2.5rem 4rem rgba($color-black, .5);
+            // enlarge img & bump up when hovered
+            transform: scale(1.05) translateY(-.5rem); 
+            z-index: 2;
+        }
+    }
+
+    // select the images that are *not* in hover-state, in css:
+    // composition:hover composition__pohot:not(:hover)
+    &:hover &__photo:not(:hover) {
+        transform: scale(.9);
+    }
+}
