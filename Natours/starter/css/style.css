@@ -225,6 +225,75 @@ body {
   box-shadow: 0 0.5rem 2rem rgba(0, 0, 0, 0.15);
   transform: translateY(0); }
 
+.card {
+  /**
+      * set same `height` as child elements; necessary as they are
+      * absolutely positioned, and w/o setting `height` on parent,
+      * content-less parent will collapse
+      */
+  height: 50rem;
+  /**
+      * `perspective` allows the card's rotation to appear to move
+      * toward the user upon hover
+      *
+      * this property *must* be set on the parent of the element to
+      * rotate
+      *
+      * this value is difficult to determine beforehand and requires
+      * experimentation, but will generally be very large;
+      * a lower number, counterintuitively, magnifies the effect (the
+      * card, upon rotating, appears to zoom in a lot toward the user).
+      */
+  perspective: 150rem;
+  -moz-perspective: 150rem;
+  /**
+      * allow for `absolute` position of child elements (card sides),
+      * to render both sides atop one another & create "single" card
+      */
+  position: relative; }
+  .card__side {
+    backface-visibility: hidden;
+    border-radius: .3rem;
+    box-shadow: 0 1.5rem 4rem rgba(0, 0, 0, 0.15);
+    color: white;
+    font-size: 2rem;
+    height: 50rem;
+    /**
+          * place `card__side` el's atop each other, create single card
+          *
+          * similar to floated elements, takes them out of flow; hence
+          * same `height` setting on parent (otherwise parent element
+          * collapses)
+          */
+    position: absolute;
+    top: 0;
+    left: 0;
+    /**
+          * `absolute` position causes elements to fit their contents'
+          * width; change to 100% of parent element
+          */
+    width: 100%;
+    transition: all .5s ease;
+    /**
+          * upon initial rendering, this `back` side is already rotated
+          * 180 degrees, to hide from user; upon hovering, defined
+          * below, rotate it to 0 degrees to display
+          */ }
+    .card__side--back {
+      transform: rotateY(180deg); }
+      .card__side--back-1 {
+        background-image: linear-gradient(to right bottom, #ffb900, #ff7730); }
+      .card__side--back-2 {
+        background-image: linear-gradient(to right bottom, #7ed56f, #28b485); }
+      .card__side--back-3 {
+        background-image: linear-gradient(to right bottom, #2998ff, #5643fa); }
+    .card__side--front {
+      background-color: #fff; }
+  .card:hover .card__side--back {
+    transform: rotateY(0deg); }
+  .card:hover .card__side--front {
+    transform: rotateY(180deg); }
+
 .composition {
   position: relative; }
   .composition__photo {
@@ -347,3 +416,8 @@ body {
   transform: skewY(-7deg); }
   .section-features > * {
     transform: skewY(7deg); }
+
+.section-tours {
+  background-color: #f7f7f7;
+  padding: 25rem 0 50rem 0;
+  margin-top: -10rem; }

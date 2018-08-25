@@ -1,0 +1,97 @@
+.card {
+    /**
+      * set same `height` as child elements; necessary as they are
+      * absolutely positioned, and w/o setting `height` on parent,
+      * content-less parent will collapse
+      */
+    height: 50rem;
+    /**
+      * `perspective` allows the card's rotation to appear to move
+      * toward the user upon hover
+      *
+      * this property *must* be set on the parent of the element to
+      * rotate
+      *
+      * this value is difficult to determine beforehand and requires
+      * experimentation, but will generally be very large;
+      * a lower number, counterintuitively, magnifies the effect (the
+      * card, upon rotating, appears to zoom in a lot toward the user).
+      */
+    perspective: 150rem;
+    -moz-perspective: 150rem;
+    /**
+      * allow for `absolute` position of child elements (card sides),
+      * to render both sides atop one another & create "single" card
+      */
+    position: relative;
+
+    &__side {
+        // hide back part of element
+        backface-visibility: hidden;
+        border-radius: .3rem;
+        box-shadow: $box-shadow-primary;
+        color: white;
+        font-size: 2rem;
+        height: 50rem;
+        /**
+          * place `card__side` el's atop each other, create single card
+          *
+          * similar to floated elements, takes them out of flow; hence
+          * same `height` setting on parent (otherwise parent element
+          * collapses)
+          */
+        position: absolute;
+        top: 0;
+        left: 0;
+        /**
+          * `absolute` position causes elements to fit their contents'
+          * width; change to 100% of parent element
+          */
+        width: 100%;
+        transition: all .5s ease;
+
+        /**
+          * upon initial rendering, this `back` side is already rotated
+          * 180 degrees, to hide from user; upon hovering, defined
+          * below, rotate it to 0 degrees to display
+          */
+        &--back {
+            transform: rotateY(180deg);
+
+            &-1 {
+                background-image: linear-gradient(
+                    to right bottom,
+                    $color-secondary-light,
+                    $color-secondary-dark
+                );
+            }
+            &-2 {
+                background-image: linear-gradient(
+                    to right bottom,
+                    $color-primary-light,
+                    $color-primary-dark
+                );
+            }
+            &-3 {
+                background-image: linear-gradient(
+                    to right bottom,
+                    $color-tertiary-light,
+                    $color-tertiary-dark
+                );
+            }
+        }
+        &--front {
+            background-color: $color-white;
+        }
+    }    
+
+    // .card:hover .card__side--back
+    &:hover &__side--back {
+        transform: rotateY(0deg);
+    }
+       
+    // .card:hover .card__side--front
+    &:hover &__side--front {
+        transform: rotateY(180deg);
+    }   
+}
