@@ -1,11 +1,13 @@
 .card {
-    /**
+    // FUNCTIONALITY
+
+    /** 
       * set same `height` as child elements; necessary as they are
       * absolutely positioned, and w/o setting `height` on parent,
       * content-less parent will collapse
       */
-    height: 50rem;
-    /**
+    height: 52rem;
+    /** 
       * `perspective` allows the card's rotation to appear to move
       * toward the user upon hover
       *
@@ -19,7 +21,7 @@
       */
     perspective: 150rem;
     -moz-perspective: 150rem;
-    /**
+    /** 
       * allow for `absolute` position of child elements (card sides),
       * to render both sides atop one another & create "single" card
       */
@@ -30,10 +32,14 @@
         backface-visibility: hidden;
         border-radius: .3rem;
         box-shadow: $box-shadow-primary;
-        color: white;
         font-size: 2rem;
-        height: 50rem;
+        height: 52rem;
         /**
+          * allow for rounded corners after including image, else the
+          * image's sharp corners override border-radius setting
+          */
+        overflow: hidden;
+        /** 
           * place `card__side` el's atop each other, create single card
           *
           * similar to floated elements, takes them out of flow; hence
@@ -48,7 +54,7 @@
           * width; change to 100% of parent element
           */
         width: 100%;
-        transition: all .5s ease;
+        transition: all .8s ease;
 
         /**
           * upon initial rendering, this `back` side is already rotated
@@ -92,6 +98,90 @@
        
     // .card:hover .card__side--front
     &:hover &__side--front {
-        transform: rotateY(180deg);
-    }   
+        transform: rotateY(-180deg);
+    }
+    
+
+    // FRONT SIDE STYLING
+    &__picture {
+        /**
+          * `background-blend-mode` not widely supported but can
+          * create some interesting effects (Instagram-filter-like)
+          */
+        background-blend-mode: screen;
+        /**
+          * `background-size` specifies the size of the element's
+          * background image; this can be 
+          *   - left to its original size,
+          *   - stretched to a new size, or 
+          *   - constrained to fit the available space while
+          *     preserving its intrinsic proportions
+          */
+        background-size: cover;
+        // set clockwise x-y coords for part of image to be rendered
+        -webkit-clip-path: polygon(0 0, 100% 0, 100% 85%, 0 100%);
+        clip-path: polygon(0 0, 100% 0, 100% 85%, 0 100%);
+        // reference note for declaration of `height` on .card
+        height: 23rem;
+        
+        &--1 {
+            background-image: linear-gradient(
+                    to right bottom,
+                    $color-secondary-light,
+                    $color-secondary-dark
+                ),
+                url(../img/nat-5.jpg);
+        }
+        &--2 {
+            background-image: url(../img/nat-5.jpg);
+        }
+        &--3 {
+            background-image: url(../img/nat-5.jpg);
+        }
+    }
+
+    &__heading {
+        color: $color-white;
+        font-size: 2.8rem;
+        font-weight: 300;
+        position: absolute;
+        top: 12rem;
+        right: 2rem;
+        text-align: right;
+        text-transform: uppercase;
+        width: 75%; /* along with padding in `__heading-span--n` below, achieves line-break in text of headings */
+    }
+
+    // this is not a modifier of .__heading
+    &__heading-span {
+        -webkit-box-decoration-break: clone; /* applies styles to element spanning more than one line as if in separate box */
+        box-decoration-break: clone;
+        padding: 1rem 1.5rem; /* along with parent's `width: 75%`creates line-breaks in text */
+        // applies styles to 'sea explorer' text
+        &--1 {
+            background-image: linear-gradient(
+                to right bottom,
+                rgba($color-secondary-light, .85),
+                rgba($color-secondary-dark, .85)
+            )
+        }
+    }
+
+    &__details {
+        padding: 3rem;
+        ul {
+            list-style: none;
+            margin: 0 auto;
+            width: 80%; /* underlining of each element will not occupy entire width */
+            li {
+                font-size: 1.5rem;
+                padding: 1rem;
+                text-align: center;
+
+                &:not(:last-child) {
+                    border-bottom: .1rem solid $color-gray-light-2;
+                }
+            }
+        }
+    }
 }
