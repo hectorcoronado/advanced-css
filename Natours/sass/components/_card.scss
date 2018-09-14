@@ -118,6 +118,8 @@
           *     preserving its intrinsic proportions
           */
         background-size: cover;
+        border-top-left-radius: 3px;
+        border-top-right-radius: 3px;
         // set clockwise x-y coords for part of image to be rendered
         -webkit-clip-path: polygon(0 0, 100% 0, 100% 85%, 0 100%);
         clip-path: polygon(0 0, 100% 0, 100% 85%, 0 100%);
@@ -133,10 +135,20 @@
                 url(../img/nat-5.jpg);
         }
         &--2 {
-            background-image: url(../img/nat-5.jpg);
+            background-image: linear-gradient(
+                    to right bottom,
+                    $color-primary-light,
+                    $color-primary-dark
+                ),
+                url(../img/nat-6.jpg);
         }
         &--3 {
-            background-image: url(../img/nat-5.jpg);
+            background-image: linear-gradient(
+                    to right bottom,
+                    $color-tertiary-light,
+                    $color-tertiary-dark
+                ),
+                url(../img/nat-7.jpg);
         }
     }
 
@@ -157,12 +169,31 @@
         -webkit-box-decoration-break: clone; /* applies styles to element spanning more than one line as if in separate box */
         box-decoration-break: clone;
         padding: 1rem 1.5rem; /* along with parent's `width: 75%`creates line-breaks in text */
+
         // applies styles to 'sea explorer' text
         &--1 {
             background-image: linear-gradient(
                 to right bottom,
                 rgba($color-secondary-light, .85),
                 rgba($color-secondary-dark, .85)
+            )
+        }
+
+        // applies styles to 'forest hiker' text
+        &--2 {
+            background-image: linear-gradient(
+                to right bottom,
+                rgba($color-primary-light, .85),
+                rgba($color-primary-dark, .85)
+            )
+        }
+
+        // applies styles to 'snow adventurer' text
+        &--3 {
+            background-image: linear-gradient(
+                to right bottom,
+                rgba($color-tertiary-light, .85),
+                rgba($color-tertiary-dark, .85)
             )
         }
     }
@@ -183,5 +214,33 @@
                 }
             }
         }
+    }
+
+    // FRONT SIDE STYLING
+    &__cta {
+       position: absolute;
+       // move element 50% away from top:
+       top: 50%;
+       // same, away from left edge:
+       left: 50%;
+       // transform to exact center (50% width of *el* not parent)
+       transform: translate(-50%, -50%);
+       width: 90%;
+    }
+
+    &__price-box {
+        color: $color-white;
+        text-align: center;
+        margin-bottom: 8rem;
+    }
+
+    &__price-only {
+        font-size: 1.4rem;
+        text-transform: uppercase;
+    }
+
+    &__price-value {
+        font-size: 6rem;
+        font-weight: 100;
     }
 }
