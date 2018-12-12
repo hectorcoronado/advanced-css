@@ -36,6 +36,15 @@
         }
     }
     
+    &--green {
+      background-color: $color-primary;
+      color: $color-white;
+
+        &::after {
+            background-color: $color-white;
+        }
+    }
+    
     /*
     `btn::after` will specify properties for the animation that occurs on the `<a class="btn..."> elements
       - specifying the `after` pseudo-element essentially creates a child element on the `<a>` element; this is why we declare `width` & `height`

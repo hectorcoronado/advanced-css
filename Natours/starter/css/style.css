@@ -153,6 +153,12 @@ body {
 .u-margin-bottom-big {
   margin-bottom: 8rem; }
 
+.u-margin-top-big {
+  margin-top: 8rem; }
+
+.u-margin-top-huge {
+  margin-top: 10rem; }
+
 .btn {
   /*
     `btn::after` will specify properties for the animation that occurs on the `<a class="btn..."> elements
@@ -191,6 +197,11 @@ body {
     color: #777; }
     .btn--white::after {
       background-color: #fff; }
+  .btn--green {
+    background-color: #55c57a;
+    color: #fff; }
+    .btn--green::after {
+      background-color: #fff; }
   .btn::after {
     border-radius: 10rem;
     position: absolute;
@@ -224,6 +235,157 @@ body {
 .btn-text:active {
   box-shadow: 0 0.5rem 2rem rgba(0, 0, 0, 0.15);
   transform: translateY(0); }
+
+.card {
+  /** 
+      * set same `height` as child elements; necessary as they are
+      * absolutely positioned, and w/o setting `height` on parent,
+      * content-less parent will collapse
+      */
+  height: 52rem;
+  /** 
+      * `perspective` allows the card's rotation to appear to move
+      * toward the user upon hover
+      *
+      * this property *must* be set on the parent of the element to
+      * rotate
+      *
+      * this value is difficult to determine beforehand and requires
+      * experimentation, but will generally be very large;
+      * a lower number, counterintuitively, magnifies the effect (the
+      * card, upon rotating, appears to zoom in a lot toward the user).
+      */
+  perspective: 150rem;
+  -moz-perspective: 150rem;
+  /** 
+      * allow for `absolute` position of child elements (card sides),
+      * to render both sides atop one another & create "single" card
+      */
+  position: relative; }
+  .card__side {
+    backface-visibility: hidden;
+    border-radius: .3rem;
+    box-shadow: 0 1.5rem 4rem rgba(0, 0, 0, 0.15);
+    font-size: 2rem;
+    height: 52rem;
+    /**
+          * allow for rounded corners after including image, else the
+          * image's sharp corners override border-radius setting
+          */
+    overflow: hidden;
+    /** 
+          * place `card__side` el's atop each other, create single card
+          *
+          * similar to floated elements, takes them out of flow; hence
+          * same `height` setting on parent (otherwise parent element
+          * collapses)
+          */
+    position: absolute;
+    top: 0;
+    left: 0;
+    /**
+          * `absolute` position causes elements to fit their contents'
+          * width; change to 100% of parent element
+          */
+    width: 100%;
+    transition: all .8s ease;
+    /**
+          * upon initial rendering, this `back` side is already rotated
+          * 180 degrees, to hide from user; upon hovering, defined
+          * below, rotate it to 0 degrees to display
+          */ }
+    .card__side--back {
+      transform: rotateY(180deg); }
+      .card__side--back-1 {
+        background-image: linear-gradient(to right bottom, #ffb900, #ff7730); }
+      .card__side--back-2 {
+        background-image: linear-gradient(to right bottom, #7ed56f, #28b485); }
+      .card__side--back-3 {
+        background-image: linear-gradient(to right bottom, #2998ff, #5643fa); }
+    .card__side--front {
+      background-color: #fff; }
+  .card:hover .card__side--back {
+    transform: rotateY(0deg); }
+  .card:hover .card__side--front {
+    transform: rotateY(-180deg); }
+  .card__picture {
+    /**
+          * `background-blend-mode` not widely supported but can
+          * create some interesting effects (Instagram-filter-like)
+          */
+    background-blend-mode: screen;
+    /**
+          * `background-size` specifies the size of the element's
+          * background image; this can be 
+          *   - left to its original size,
+          *   - stretched to a new size, or 
+          *   - constrained to fit the available space while
+          *     preserving its intrinsic proportions
+          */
+    background-size: cover;
+    border-top-left-radius: 3px;
+    border-top-right-radius: 3px;
+    -webkit-clip-path: polygon(0 0, 100% 0, 100% 85%, 0 100%);
+    clip-path: polygon(0 0, 100% 0, 100% 85%, 0 100%);
+    height: 23rem; }
+    .card__picture--1 {
+      background-image: linear-gradient(to right bottom, #ffb900, #ff7730), url(../img/nat-5.jpg); }
+    .card__picture--2 {
+      background-image: linear-gradient(to right bottom, #7ed56f, #28b485), url(../img/nat-6.jpg); }
+    .card__picture--3 {
+      background-image: linear-gradient(to right bottom, #2998ff, #5643fa), url(../img/nat-7.jpg); }
+  .card__heading {
+    color: #fff;
+    font-size: 2.8rem;
+    font-weight: 300;
+    position: absolute;
+    top: 12rem;
+    right: 2rem;
+    text-align: right;
+    text-transform: uppercase;
+    width: 75%;
+    /* along with padding in `__heading-span--n` below, achieves line-break in text of headings */ }
+  .card__heading-span {
+    -webkit-box-decoration-break: clone;
+    /* applies styles to element spanning more than one line as if in separate box */
+    box-decoration-break: clone;
+    padding: 1rem 1.5rem;
+    /* along with parent's `width: 75%`creates line-breaks in text */ }
+    .card__heading-span--1 {
+      background-image: linear-gradient(to right bottom, rgba(255, 185, 0, 0.85), rgba(255, 119, 48, 0.85)); }
+    .card__heading-span--2 {
+      background-image: linear-gradient(to right bottom, rgba(126, 213, 111, 0.85), rgba(40, 180, 133, 0.85)); }
+    .card__heading-span--3 {
+      background-image: linear-gradient(to right bottom, rgba(41, 152, 255, 0.85), rgba(86, 67, 250, 0.85)); }
+  .card__details {
+    padding: 3rem; }
+    .card__details ul {
+      list-style: none;
+      margin: 0 auto;
+      width: 80%;
+      /* underlining of each element will not occupy entire width */ }
+      .card__details ul li {
+        font-size: 1.5rem;
+        padding: 1rem;
+        text-align: center; }
+        .card__details ul li:not(:last-child) {
+          border-bottom: 0.1rem solid #eee; }
+  .card__cta {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 90%; }
+  .card__price-box {
+    color: #fff;
+    text-align: center;
+    margin-bottom: 8rem; }
+  .card__price-only {
+    font-size: 1.4rem;
+    text-transform: uppercase; }
+  .card__price-value {
+    font-size: 6rem;
+    font-weight: 100; }
 
 .composition {
   position: relative; }
@@ -306,6 +468,8 @@ body {
   background-image: linear-gradient(to right bottom, rgba(126, 213, 111, 0.8), rgba(40, 180, 133, 0.8)), url(../img/hero.jpg);
   background-position: top;
   background-size: cover;
+  -webkit-clip-path: polygon(0 0, 100% 0, 100% 75vh, 0 100%);
+  /* not widely supported, set x-y coords clockwise from top left corner to give shape to rendered image */
   clip-path: polygon(0 0, 100% 0, 100% 75vh, 0 100%);
   height: 95vh;
   position: relative; }
@@ -347,3 +511,8 @@ body {
   transform: skewY(-7deg); }
   .section-features > * {
     transform: skewY(7deg); }
+
+.section-tours {
+  background-color: #f7f7f7;
+  padding: 25rem 0 15rem 0;
+  margin-top: -10rem; }

@@ -6,7 +6,8 @@
       url(../img/hero.jpg);
   background-position: top;
   background-size: cover;
-  clip-path: polygon(0  0, 100% 0, 100% 75vh, 0 100%);
+  -webkit-clip-path: polygon(0  0, 100% 0, 100% 75vh, 0 100%); /* not widely supported, set x-y coords clockwise from top left corner to give shape to rendered image */
+  clip-path: polygon(0  0, 100% 0, 100% 75vh, 0 100%); 
   height: 95vh;
   position: relative;
 
