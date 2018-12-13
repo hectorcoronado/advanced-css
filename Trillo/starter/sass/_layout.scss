@@ -9,7 +9,7 @@
 
 .header {
     background-color: white;
-    border-bottom: var(--color-grey-light-2);
+    border-bottom: 1px solid var(--color-grey-light-2);
     // override global font-size of 10px for header element
     font-size: 1.4rem;
     height: 7rem;
@@ -46,7 +46,6 @@
 
 .hotel-view {
     background-color: white;
-    background-color: orangered;
     height: 80rem; //test
 
     /**
