@@ -35,11 +35,19 @@
       * 3rd for `flex-basis`
       */
     flex: 0 0 18%;
+
+    // make element a flex-container:
+    display: flex;
+    // and since it's displayed as a side-bar, not a top navbar, set direction to column
+    flex-direction: column;
+    // align items along the *main axis*
+    justify-content: space-between;
 }
 
 .hotel-view {
     background-color: white;
     background-color: orangered;
+    height: 80rem; //test
 
     /**
       * the `hotel-view` element should occupy

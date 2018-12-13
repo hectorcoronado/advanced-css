@@ -1,10 +1,14 @@
-// LOGO
+//////////
+// LOGO //
+//////////
 .logo {
     height: 3.25rem;
     margin-left: 2rem;
 }
 
-// SEARCH BOX
+////////////////
+// SEARCH BOX //
+////////////////
 .search {
     flex: 0 0 40%;
 
@@ -67,7 +71,9 @@
     }
 }
 
-// USER NAV
+//////////////
+// USER NAV //
+//////////////
 .user-nav {
     /**
       * override `header`'s `align-items: center` property so that
@@ -126,4 +132,85 @@
         height: 3.75rem;
         margin-right: 1rem;
     }
+}
+
+//////////////
+// SIDE NAV //
+//////////////
+.side-nav {
+    font-size: 1.4rem;
+    list-style: none;
+    margin-top: 3.5rem;
+
+    &__item {
+        // set position to relative to render `::before` as expected
+        position: relative;
+
+        // add margin bottom to all items except last one
+        &:not(:last-child) {
+            margin-bottom: .5rem;
+        }
+    }
+
+    // small line that becomes visible and then expands to the right on hover
+    &__item::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 3px;
+    background-color: var(--color-primary);
+    transform: scaleY(0);
+    transition: transform .2s,
+                width .4s cubic-bezier(1,0,0,1) .2s,
+                background-color .1s;
+    }
+
+    &__item:hover::before,
+    &__item--active::before {
+        transform: scaleY(1);
+        width: 100%;
+    }
+
+    &__item:active::before {
+        background-color: var(--color-primary-light);
+    }    
+
+    // `:link` selects all <a>, <link>, and <area> elements that haven't been visited
+    &__link:link,
+    &__link:visited {
+        color: var(--color-grey-light-1);
+        display: block;
+        padding: 1.5rem 3rem;
+        text-decoration: none;
+        text-transform: uppercase;
+
+        // set position to relative so that z-index works
+        // necessary so that hover effect doesn't 'cover' text
+        position: relative;
+        z-index: 10;
+
+        // make element flex container to align icon & text
+        display: flex;
+        align-items: center;
+    }
+
+    &__icon {
+        // currentColor uses the color of the current element or the parent element
+        fill: currentColor;
+        height: 1.75rem;
+        margin-right: 2rem;
+        width: 1.75rem;
+    }
+}
+
+////////////////
+// LEGAL TEXT //
+////////////////
+.legal {
+    color: var(--color-grey-light-4);
+    font-size: 1.2rem;
+    padding: 2.5rem;
+    text-align: center;
 }
