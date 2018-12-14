@@ -15,7 +15,10 @@
   --color-grey-dark-1: #333;
   --color-grey-dark-2: #777;
   --color-grey-dark-3: #999;
-  --shadow-dark: 0 2rem 6rem rgba(0m 0, 0, .3); }
+  --shadow-dark: 0 2rem 6rem rgba(0m 0, 0, .3);
+  --shadow-light: 0 2rem 5rem rgba(0, 0 , 0, .06);
+  --line: 1px solid var(--color-grey-light-2)
+; }
 
 * {
   margin: 0;
@@ -79,6 +82,23 @@ body {
       * the `hotel-view` element should occupy
       * all remaining space in its container
       */
+  flex: 1; }
+
+.detail {
+  background-color: var(--color-grey-light-1);
+  border-bottom: var(--line);
+  display: flex;
+  padding: 4.5rem; }
+
+.description {
+  background-color: white;
+  box-shadow: var(--shadow-light);
+  margin-right: 4.5rem;
+  padding: 3rem;
+  flex: 0 0 60%; }
+
+.user-reviews {
+  background-color: yellowgreen;
   flex: 1; }
 
 .logo {

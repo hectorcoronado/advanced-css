@@ -54,3 +54,27 @@
       */
     flex: 1;
 }
+
+.detail {
+    background-color: var(--color-grey-light-1);
+    border-bottom: var(--line);
+    display: flex;
+    padding: 4.5rem;
+}
+
+.description {
+    background-color: white;
+    box-shadow: var(--shadow-light);
+    margin-right: 4.5rem;
+    padding: 3rem;
+
+    // this div should occupy 60% of available width
+    flex: 0 0 60%;
+}
+
+.user-reviews {
+    background-color: yellowgreen;
+    
+    // since `.description` occupies 60%, this element can occupy all the rest:
+    flex: 1;
+}
