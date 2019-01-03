@@ -77,6 +77,7 @@ body {
 
 .hotel-view {
   background-color: white;
+  height: 80rem;
   /**
       * the `hotel-view` element should occupy
       * all remaining space in its container
@@ -308,52 +309,3 @@ body {
   100% {
     box-shadow: none;
     transform: scale(1); } }
-
-.paragraph:not(:last-of-type) {
-  margin-bottom: 2rem; }
-
-.list {
-  list-style: none;
-  border-bottom: var(--line);
-  border-top: var(--line);
-  margin: 3rem 0;
-  padding: 3rem 0;
-  display: flex;
-  flex-wrap: wrap; }
-  .list__item {
-    flex: 0 0 50%;
-    margin-bottom: .7rem; }
-  .list__item::before {
-    content: '';
-    display: inline-block;
-    height: 1rem;
-    width: 1rem;
-    margin-right: .7rem;
-    /**
-          * what is a mask? a mask defines an area where we can "look through" the element, and
-          * see what is behind it -- what we're going to do is set background-color of the element
-          * to a solid color, and use the icon as the mask; we can then look through the mask and
-          * see the background color in the area where the icon is, while everything else is covered
-          * and therefore white
-          */
-    background-color: var(--color-primary);
-    -webkit-mask-image: url(../img/chevron-thin-right.svg);
-    -webkit-mask-size: cover;
-    mask-image: url(../img/chevron-thin-right.svg);
-    mask-size: cover; }
-
-.recommend {
-  color: var(--color-grey-dark-3);
-  font-size: 1.3rem;
-  display: flex;
-  align-items: center; }
-  .recommend__count {
-    margin-right: auto; }
-  .recommend__photo {
-    border-radius: 50%;
-    box-sizing: content-box;
-    height: 4rem;
-    width: 4rem; }
-    .recommend__photo:not(:last-child) {
-      border: 3px solid white;
-      margin-right: -1.5rem; }

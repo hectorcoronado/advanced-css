@@ -46,7 +46,6 @@
 
 .hotel-view {
     background-color: white;
-    height: 80rem; //test
 
     /**
       * the `hotel-view` element should occupy
@@ -65,10 +64,11 @@
 .description {
     background-color: white;
     box-shadow: var(--shadow-light);
+    font-size: 1.4rem;
     margin-right: 4.5rem;
     padding: 3rem;
 
-    // this div should occupy 60% of available width
+    // this div should occupy 60% of available width (0 flex-grow, 0 flex-shrink, 60% flex-basis)
     flex: 0 0 60%;
 }
 

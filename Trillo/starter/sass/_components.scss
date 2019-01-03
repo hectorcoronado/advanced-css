@@ -20,7 +20,7 @@
     justify-content: center;
 
     &__input {
-        // inputs don't inherit automatically font property
+        // inputs don't automatically inherit font property
         background-color: var(--color-grey-light-2);
         border: none;
         border-radius: 1000px;
@@ -342,5 +342,92 @@
     100% {
         box-shadow: none;
         transform: scale(1);
+    }
+}
+
+///////////////
+// PARAGRAPH //
+///////////////
+.paragraph:not(:last-of-type) {
+    margin-bottom: 2rem;
+}
+
+//////////
+// LIST //
+//////////
+.list {
+    list-style: none;
+    border-bottom: var(--line);
+    border-top: var(--line);
+    margin: 3rem 0;
+    padding: 3rem 0;
+
+    display: flex;
+    flex-wrap: wrap;
+    
+    // create columns for list items after setting parent's `display` to flex
+    &__item {
+        // list items should neither shrink or grow, but should occupy 1/2 of available width
+        flex: 0 0 50%;
+        margin-bottom: .7rem;
+    }
+
+    // pseudo-element to display chevron-thin-right svg icon
+    &__item::before {
+        content: '';
+        display: inline-block;
+        height: 1rem;
+        width: 1rem;
+        margin-right: .7rem;
+
+        // this approach works for older browsers, but we cannot change the chevron's color
+        // background-image: url(../img/chevron-thin-right.svg);
+        // background-size: cover;
+
+        // newer browsers -- masks
+        /**
+          * what is a mask? a mask defines an area where we can "look through" the element, and
+          * see what is behind it -- what we're going to do is set background-color of the element
+          * to a solid color, and use the icon as the mask; we can then look through the mask and
+          * see the background color in the area where the icon is, while everything else is covered
+          * and therefore white
+          */
+        background-color: var(--color-primary);
+        -webkit-mask-image: url(../img/chevron-thin-right.svg);
+        -webkit-mask-size: cover; // similar to background-size property; set to `cover` so icon covers entire element
+        // future proof
+        mask-image: url(../img/chevron-thin-right.svg);
+        mask-size: cover;
+    }
+}
+
+///////////////
+// RECOMMEND //
+///////////////
+.recommend {
+    color: var(--color-grey-dark-3);
+    font-size: 1.3rem;
+
+    display: flex;
+    align-items: center;
+    
+    &__count {
+        margin-right: auto;
+    }
+
+    &__friends {
+
+    }
+
+    &__photo {
+        border-radius: 50%;
+        box-sizing: content-box; // set back to default, so that border is added "on top" of width and height
+        height: 4rem;
+        width: 4rem;
+
+        &:not(:last-child) {
+            border: 3px solid white;
+            margin-right: -1.5rem;
+        }
     }
 }

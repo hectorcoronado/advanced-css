@@ -207,3 +207,4 @@ an algorithm that calculates boxes & determines the layout of these boxes for ea
 - a fixed position element is positioned relative to the *viewport*
 - it's useful for e.g. a navbar that should render at the top of the page and stay there as a user scrolls down
 
+# Maintaining image aspect-ratios:
