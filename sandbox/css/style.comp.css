@@ -1,0 +1,22 @@
+* {
+  margin: 0;
+  padding: 0; }
+
+*,
+*::before,
+*::after {
+  box-sizing: inherit; }
+
+html {
+  box-sizing: border-box;
+  font-size: 62.5%; }
+
+.container {
+  background-color: antiquewhite;
+  height: 100vh;
+  width: 100vw; }
+
+.rectangle {
+  background-color: indianred;
+  height: 50%;
+  width: 75%; }
