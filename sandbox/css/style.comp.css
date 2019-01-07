@@ -11,12 +11,21 @@ html {
   box-sizing: border-box;
   font-size: 62.5%; }
 
+body {
+  border: 1px solid green;
+  font-family: 'Open Sans', sans-serif;
+  font-weight: 400;
+  line-height: 1.6;
+  min-height: 100%; }
+
 .container {
   background-color: antiquewhite;
+  border: 1px solid black;
   height: 100vh;
   width: 100vw; }
 
 .rectangle {
   background-color: indianred;
+  border: 1px solid red;
   height: 50%;
   width: 75%; }
