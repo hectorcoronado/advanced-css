@@ -1,15 +1,17 @@
 {
-  "name": "natours",
-  "version": "1.0.0",
-  "description": "css practice app",
-  "main": "index.js",
-  "scripts": {
-    "compile:sass": "node-sass sass/main.scss starter/css/style.css -w",
-    "live-server": "node-sass sass/main.scss starter/css/style.css -w & live-server starter"
-  },
-  "author": "Hector Coronado",
-  "license": "ISC",
-  "devDependencies": {
-    "node-sass": "^4.5.3"
-  }
+    "name": "natours",
+    "version": "1.0.0",
+    "description": "css practice app",
+    "main": "index.js",
+    "scripts": {
+        "compile:sass": "node-sass sass/main.scss css/style.comp.css",
+        "watch:sass": "nodemon ./starter localhost 8080 -e scss -x \"npm run compile:sass\"",
+        "live-server": "node-sass sass/main.scss starter/css/style.css -w live-server"
+    },
+    "author": "Hector Coronado",
+    "license": "ISC",
+    "devDependencies": {
+        "node-sass": "^4.5.3",
+        "nodemon": "^1.18.10"
+    }
 }
