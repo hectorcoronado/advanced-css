@@ -5,8 +5,29 @@
     margin: 30px auto;
 
     display: grid;
-    grid-template-rows: 150px 150px;
-    grid-template-columns: 150px 150px 150px;
+    /* grid-template-rows: 150px 150px; */
+
+    /* the declaration above works, but is redundant;
+     * each subsequent declaration results in a row
+     * but in lieu of it we can use the `repeat` function
+     */
+    grid-template-rows: repeat(2, 150px);
+
+    /* grid-template-columns: 150px 150px 150px; */
+    grid-template-columns: repeat(3, 150px);
+
+    /*
+     * if we want to have x number of rows/columns of y width,
+     * and then one or more of z or n widths, we can do so:
+
+     grid-template-columns: repeat(2, 150px), 300px;
+
+     this would result in 2 150px columns and a third of 300px
+
+     we can also define the last column to occupy remaining space:
+
+     grid-template-columns: repeat(2, 150px) 1fr;
+     */
 
     /* grid-row-gap: 10px; */
     /* grid-column-gap: 10px; */
