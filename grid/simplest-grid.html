@@ -1,8 +1,9 @@
 <style>
   .container {
     background-color: #eee;
-    width: 1000px;
-    margin: 30px auto;
+    width: 90vw;
+    height: 95vh;
+    margin: 15px auto;
 
     display: grid;
     /* grid-template-rows: 150px 150px; */
@@ -11,10 +12,28 @@
      * each subsequent declaration results in a row
      * but in lieu of it we can use the `repeat` function
      */
-    grid-template-rows: repeat(2, 150px);
+    grid-template-rows: repeat(2, 1fr);
 
+    /*
+     * the following results in 3 cols each 150px wide:
+     */
     /* grid-template-columns: 150px 150px 150px; */
-    grid-template-columns: repeat(3, 150px);
+
+    /*
+     * ...this will have 2 cols, each 150px wide, and a 3rd
+     * that will occupy all remaining space
+     */
+    /* grid-template-columns: repeat(2, 150px) 1fr; */
+
+    /*
+     * ...this will have 1 col occupying half the container's
+     * width, and then the other two will be 1/3 and 2/3 of
+     * the remaining width MINUS the grid gap
+     */
+    /* grid-template-columns: 50% 1fr 2fr; */
+
+    /* ...and this will have 3 cols of equal width */
+    grid-template-columns: repeat(3, 1fr);
 
     /*
      * if we want to have x number of rows/columns of y width,
