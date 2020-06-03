@@ -1,5 +1,5 @@
 /* METHOD 1: line numbers */
-.challenge {
+/* .challenge {
   width: 1000px;
   margin: 30px auto;
 
@@ -30,4 +30,38 @@
 
 .main-content {
   grid-column: 1 / span 3;
+} */
+
+/* METHOD 2: line names */
+.challenge {
+  width: 1000px;
+  margin: 30px auto;
+
+  display: grid;
+
+  grid-template-rows: [header-start] 100px [header-end box-start] 200px [box-end main-start] 400px [main-end footer-start] 100px [footer-end];
+  grid-template-columns: repeat(3, [col-start] 1fr [col-end]) 200px [grid-end];
+  grid-gap: 30px;
+}
+
+.challenge > * {
+  background-color: orangered;
+  padding: 20px;
+  color: white;
+  font-size: 20px;
+  font-family: sans-serif;
+}
+
+.header,
+.footer {
+  grid-column: col-start 1 / grid-end;
+}
+
+.sidebar {
+  grid-column: col-end 3 / grid-end;
+  grid-row: box-start / main-end;
+}
+
+.main-content {
+  grid-column: col-start 1 / col-end 3;
 }
