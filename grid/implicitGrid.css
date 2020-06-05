@@ -1,0 +1,36 @@
+.container {
+  background-color: ghostwhite;
+  margin: 30px auto;
+  width: 1000px;
+
+  display: grid;
+  grid-gap: 30px;
+  grid-template-columns: repeat(2, 1fr);
+  grid-template-rows: repeat(2, 150px);
+
+  /* 
+   * implicit grid
+   *
+   * any rows that aren't defined by us
+   * will automatically have a height of
+   * 100px:
+   */
+  grid-auto-rows: 100px;
+
+  /*
+   * grid-auto-flow
+   *
+   * dafault value is 'row', but we can
+   * set it to column if we need a
+   * horizontal distribution of elements
+   */
+  grid-auto-flow: column;
+  grid-auto-columns: .5fr;
+}
+
+.item {
+  background-color: lavender;
+  font-family: sans-serif;
+  font-size: 30px;
+  padding: 20px;
+}
